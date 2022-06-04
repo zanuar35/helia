@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:helia/core/app_colors.dart';
 
 class AppTextStyles {
@@ -7,6 +7,9 @@ class AppTextStyles {
     fontWeight: FontWeight.w800,
     letterSpacing: 0.4,
   );
+
+  static TextStyle boltTitle = const TextStyle(
+      fontSize: 40, fontWeight: FontWeight.w900, letterSpacing: .4);
 
   static TextStyle subtitle = TextStyle(
     fontSize: 16,
@@ -26,6 +29,13 @@ class AppTextStyles {
     fontSize: 16,
     letterSpacing: .4,
     color: AppColors.green,
+    fontWeight: FontWeight.bold,
+  );
+
+  static TextStyle body161 = const TextStyle(
+    fontSize: 16,
+    letterSpacing: .4,
+    color: Colors.black,
     fontWeight: FontWeight.bold,
   );
 }

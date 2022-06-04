@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:helia/core/app_colors.dart';
 import 'package:helia/core/app_text_style.dart';
 
+import '../letin/let_in.dart';
+
 class IntroductionScreen extends StatefulWidget {
   const IntroductionScreen({Key? key}) : super(key: key);
 
@@ -75,23 +77,10 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                       height: 20,
                     ),
                     nextButton(),
-                    Row(
-                      children: [
-                        Expanded(
-                            child: Container(
-                          height: 50,
-                          child: Center(
-                            child: Text(
-                              "Skip",
-                              style: AppTextStyles.buttonSoftGreen,
-                            ),
-                          ),
-                          decoration: BoxDecoration(
-                              color: AppColors.softGreen,
-                              borderRadius: BorderRadius.circular(30)),
-                        ))
-                      ],
+                    const SizedBox(
+                      height: 20,
                     ),
+                    skipButton(),
                     const SizedBox(
                       height: 60,
                     )
@@ -99,6 +88,36 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                 ))
           ],
         ),
+      ),
+    );
+  }
+
+  Widget skipButton() {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: ((context) => const LetIn()),
+          ),
+        );
+      },
+      child: Row(
+        children: [
+          Expanded(
+              child: Container(
+            height: 50,
+            child: Center(
+              child: Text(
+                "Skip",
+                style: AppTextStyles.buttonSoftGreen,
+              ),
+            ),
+            decoration: BoxDecoration(
+                color: AppColors.softGreen,
+                borderRadius: BorderRadius.circular(30)),
+          ))
+        ],
       ),
     );
   }
