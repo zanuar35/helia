@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:helia/core/app_colors.dart';
 import 'package:helia/core/app_text_style.dart';
+import 'package:helia/screen/home/home.dart';
 import 'package:helia/screen/letin/let_in.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -157,7 +158,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   Widget nextButton() {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => const MyHomePage(title: "a"),
+          ),
+        );
+      },
       child: Row(
         children: [
           Expanded(

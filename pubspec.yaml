@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   loading_animation_widget: ^1.2.0+1
   google_fonts: ^3.0.1
+  supabase: ^0.3.4+1
+  flutter_bloc: ^8.0.1
 
 dev_dependencies:
   flutter_test:
