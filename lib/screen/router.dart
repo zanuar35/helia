@@ -12,7 +12,7 @@ class AppRouter {
       case '/letin':
         return MaterialPageRoute(builder: (_) => const LetIn());
       case '/home':
-        return MaterialPageRoute(builder: (_) => const MyHomePage(title: "a"));
+        return MaterialPageRoute(builder: (_) => const MyHomePage());
       case '/register':
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
       default:

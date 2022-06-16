@@ -3,11 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:helia/bloc/home/cubit/homecubit_cubit.dart';
 import 'package:helia/core/app_colors.dart';
 import 'package:helia/core/app_text_style.dart';
+import 'package:helia/screen/recenty_booked/recenty_booked.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const MyHomePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -105,16 +106,21 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 20,
                 ),
                 Row(
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       "Recently Booked",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           letterSpacing: .4,
                           fontSize: 16),
                     ),
-                    Expanded(child: SizedBox()),
-                    Text("See all")
+                    const Expanded(child: SizedBox()),
+                    InkWell(
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>const RecentlyBooked())),
+                        child: const Text("See all"))
                   ],
                 ),
                 hotelTile(),
@@ -288,7 +294,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             child: const SizedBox(),
           ),
-          SizedBox(
+          const SizedBox(
             width: 20,
           ),
           Column(
@@ -305,7 +311,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Row(
                 children: const [
-                  Icon(Icons.star, size: 16, color: Colors.white),
+                  Icon(Icons.star, size: 16, color: Colors.orange),
                   Text(
                     "4.5",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
@@ -320,6 +326,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           const Expanded(child: SizedBox()),
           Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "\$35",
@@ -328,7 +335,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     fontWeight: FontWeight.bold,
                     color: AppColors.green),
               ),
-              Text("/ night"),
+              const Text("/ night"),
               IconButton(onPressed: () {}, icon: const Icon(Icons.bookmark))
             ],
           )
@@ -336,4 +343,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
+
 }

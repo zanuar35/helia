@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:helia/screen/onboarding/onboarding.dart';
+
+import 'package:helia/screen/home_page.dart';
+
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const OnboardingScreen(),
+          builder: (context) => const HomePage(),
         ),
       );
     });

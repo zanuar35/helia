@@ -10,7 +10,7 @@ class HomecubitCubit extends Cubit<HomecubitState> {
   HomecubitCubit() : super(HomecubitInitial());
 
   final client = SupabaseClient('https://plxpluxkrgpwgkxotvfw.supabase.co',
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBseHBsdXhrcmdwd2dreG90dmZ3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY1NDM5MjY0NSwiZXhwIjoxOTY5OTY4NjQ1fQ.QBxxyunITtdup16WR_3ufDacFS1EfJPkEtr_nK53S1Q');
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBseHBsdXhrcmdwd2dreG90dmZ3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY1NDQzNjg4OCwiZXhwIjoxOTcwMDEyODg4fQ.ujQYUbncM8RPbeeq3L3VPXQXKf0QWpqEeqLhC73LJpE');
 
   void getData() async {
     final stopwatch = Stopwatch()..start();
