@@ -16,7 +16,9 @@ class _EditProfileState extends State<EditProfile> {
     return Scaffold(
       appBar: AppBar(
           leading: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
               icon: const Icon(
                 Icons.chevron_left,
                 color: Colors.black,
@@ -39,10 +41,11 @@ class _EditProfileState extends State<EditProfile> {
                 height: 55,
                 padding: const EdgeInsets.only(left: 20),
                 decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.grey[100],
                     borderRadius: BorderRadius.circular(10)),
                 child: const Center(
                   child: TextField(
+                    autocorrect: false,
                     decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: "Full Name",
@@ -55,7 +58,7 @@ class _EditProfileState extends State<EditProfile> {
                 height: 55,
                 padding: const EdgeInsets.only(left: 20),
                 decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.grey[100],
                     borderRadius: BorderRadius.circular(10)),
                 child: const Center(
                   child: TextField(
@@ -71,15 +74,27 @@ class _EditProfileState extends State<EditProfile> {
                 height: 55,
                 padding: const EdgeInsets.only(left: 20),
                 decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.grey[100],
                     borderRadius: BorderRadius.circular(10)),
-                child: const Center(
+                child: Center(
                   child: TextField(
                     decoration: InputDecoration(
                         border: InputBorder.none,
-                        suffixIcon: Icon(Icons.calendar_today),
-                        hintText: "Tanggal",
-                        hintStyle: TextStyle(fontSize: 14)),
+                        suffixIcon: IconButton(
+                            onPressed: () {
+                              showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime.now(),
+                                lastDate: DateTime(2099),
+                              ).then((date) {
+                                //tambahkan setState dan panggil variabel _dateTime.
+                                setState(() {});
+                              });
+                            },
+                            icon: const Icon(Icons.calendar_today)),
+                        hintText: "Tanggal Lahir",
+                        hintStyle: const TextStyle(fontSize: 14)),
                   ),
                 )),
             Container(
@@ -88,7 +103,7 @@ class _EditProfileState extends State<EditProfile> {
                 height: 55,
                 padding: const EdgeInsets.only(left: 20),
                 decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.grey[100],
                     borderRadius: BorderRadius.circular(10)),
                 child: const Center(
                   child: TextField(
@@ -105,10 +120,11 @@ class _EditProfileState extends State<EditProfile> {
                 height: 55,
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.grey[100],
                     borderRadius: BorderRadius.circular(10)),
                 child: Center(
                   child: DropdownButton<String>(
+                    underline: const SizedBox(),
                     value: dropdownValue1,
                     isExpanded: true,
                     icon: const Icon(Icons.expand_more),
@@ -127,7 +143,8 @@ class _EditProfileState extends State<EditProfile> {
                     ].map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
-                        child: Text(value, style: TextStyle(fontSize: 14)),
+                        child:
+                            Text(value, style: const TextStyle(fontSize: 14)),
                       );
                     }).toList(),
                   ),
@@ -138,7 +155,7 @@ class _EditProfileState extends State<EditProfile> {
                 height: 55,
                 padding: const EdgeInsets.only(left: 20),
                 decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.grey[100],
                     borderRadius: BorderRadius.circular(10)),
                 child: const Center(
                   child: TextField(
@@ -154,10 +171,11 @@ class _EditProfileState extends State<EditProfile> {
                 height: 55,
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Colors.grey[100],
                     borderRadius: BorderRadius.circular(10)),
                 child: Center(
                   child: DropdownButton<String>(
+                    underline: const SizedBox(),
                     value: dropdownValue,
                     isExpanded: true,
                     icon: const Icon(Icons.expand_more),
@@ -171,29 +189,30 @@ class _EditProfileState extends State<EditProfile> {
                         .map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
-                        child: Text(value, style: TextStyle(fontSize: 14)),
+                        child:
+                            Text(value, style: const TextStyle(fontSize: 14)),
                       );
                     }).toList(),
                   ),
                 )),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Container(
               width: double.infinity,
-              height: 60,
-              child: Center(
+              height: 45,
+              child: const Center(
                 child: Text(
                   "Update",
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 14,
                       letterSpacing: .6,
                       color: Colors.white,
                       fontWeight: FontWeight.bold),
                 ),
               ),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(7),
                   color: AppColors.green),
             )
           ],
