@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: ListView(
               children: <Widget>[
                 Container(
-                  padding: const EdgeInsets.only(top: 20, bottom: 20),
+                  padding: const EdgeInsets.only(top: 10, bottom: 20),
                   width: double.infinity,
                   child: Row(
                     children: [
@@ -49,11 +49,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       const Text("Helia",
                           style: TextStyle(
-                              fontSize: 30,
+                              fontSize: 24,
                               fontWeight: FontWeight.w800,
                               letterSpacing: 0.4)),
                       const Expanded(child: SizedBox()),
                       IconButton(
+                          padding: EdgeInsets.all(4),
                           onPressed: () {
                             homecubitCubit.insertData();
                           },
@@ -66,16 +67,21 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                   ),
                 ),
-                Text("Hello, Daniel", style: AppTextStyles.title),
+                const Text("Hello, Daniel",
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: 0.4,
+                    )),
                 const SizedBox(
-                  height: 20,
+                  height: 18,
                 ),
                 searchBox(),
                 const SizedBox(
-                  height: 20,
+                  height: 14,
                 ),
                 Container(
-                  height: 70,
+                  height: 55,
                   color: const Color(0xffE7F6FF),
                   width: double.infinity,
                   child: ListView(
@@ -90,10 +96,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 14,
                 ),
                 Container(
-                  height: 250,
+                  height: 220,
                   color: const Color(0xffE7F6FF),
                   width: double.infinity,
                   child: ListView(
@@ -103,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 14,
                 ),
                 Row(
                   children: [
@@ -119,8 +125,16 @@ class _MyHomePageState extends State<MyHomePage> {
                         onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>const RecentlyBooked())),
-                        child: const Text("See all"))
+                                builder: (context) => const RecentlyBooked())),
+                        child: Text(
+                          "See all",
+                          style: TextStyle(
+                            color: AppColors.green,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: .4,
+                            fontSize: 16,
+                          ),
+                        ))
                   ],
                 ),
                 hotelTile(),
@@ -140,10 +154,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget carouselCard() {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 10),
       padding: const EdgeInsets.all(10),
       height: 200,
-      width: 180,
+      width: 170,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -152,13 +166,12 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               const Expanded(child: SizedBox()),
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 child: Row(
                   children: const [
                     Icon(
                       Icons.star,
-                      size: 16,
+                      size: 14,
                       color: Colors.white,
                     ),
                     SizedBox(
@@ -167,7 +180,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     Text(
                       "4",
                       style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
+                          fontSize: 13,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
                     )
                   ],
                 ),
@@ -182,7 +197,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Text(
             "Emeralda De Hotel",
             style: TextStyle(
-                fontSize: 18,
+                fontSize: 14,
                 letterSpacing: .4,
                 color: AppColors.white,
                 fontWeight: FontWeight.bold),
@@ -190,7 +205,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Text(
             "Paris, France",
             style: TextStyle(
-                fontSize: 14,
+                fontSize: 10,
                 letterSpacing: .4,
                 color: AppColors.white,
                 fontWeight: FontWeight.bold),
@@ -202,7 +217,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: TextStyle(
                     color: AppColors.white, fontWeight: FontWeight.bold),
               ),
-              const Text("/ night"),
+              Text(
+                " / per night",
+                style: TextStyle(
+                  fontSize: 11,
+                  color: AppColors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               const Expanded(child: SizedBox()),
               IconButton(onPressed: () {}, icon: const Icon(Icons.bookmark))
             ],
@@ -224,26 +246,28 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget categoryContainer({required String title, required int index}) {
     return Container(
-      margin: const EdgeInsets.all(8),
-      padding: const EdgeInsets.symmetric(horizontal: 25),
+      margin: const EdgeInsets.only(right: 10, top: 10, bottom: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
-        color: AppColors.green,
+        color: index == 1 ? AppColors.green : Colors.transparent,
         borderRadius: BorderRadius.circular(30),
+        border: Border.all(color: AppColors.green, width: 1.5),
       ),
       child: Center(
           child: Text(
         title,
         style: TextStyle(
+            fontSize: 12,
             fontWeight: FontWeight.bold,
             letterSpacing: .2,
-            color: AppColors.white),
+            color: index == 1 ? AppColors.white : AppColors.green),
       )),
     );
   }
 
   Widget searchBox() {
     return Container(
-      height: 55,
+      height: 50,
       padding: const EdgeInsets.symmetric(horizontal: 16),
       width: double.infinity,
       child: Row(
@@ -303,22 +327,22 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               const Text(
                 "President Hotel",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               const Text(
                 "Paris, France",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
               ),
               Row(
                 children: const [
                   Icon(Icons.star, size: 16, color: Colors.orange),
                   Text(
-                    "4.5",
+                    "4.5 ",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                   ),
                   Text(
-                    "(4738 review )",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                    " (4738 review )",
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
                   )
                 ],
               )
@@ -335,7 +359,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     fontWeight: FontWeight.bold,
                     color: AppColors.green),
               ),
-              const Text("/ night"),
+              const Text(
+                "/ night",
+                style: TextStyle(fontSize: 11,letterSpacing: .4)
+              ),
               IconButton(onPressed: () {}, icon: const Icon(Icons.bookmark))
             ],
           )
@@ -343,6 +370,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-
-
 }
