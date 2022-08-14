@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:helia/core/app_colors.dart';
 
 class SearchPage extends StatefulWidget {
@@ -24,7 +23,7 @@ class _SearchPageState extends State<SearchPage> {
                 height: 10,
               ),
               SizedBox(
-                height: 70,
+                height: 55,
                 width: double.infinity,
                 child: ListView(
                   shrinkWrap: true,
@@ -78,21 +77,56 @@ class _SearchPageState extends State<SearchPage> {
         Expanded(
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            height: 60,
+            height: 48,
             child: Row(
-              children: const [
-                FaIcon(FontAwesomeIcons.magnifyingGlass),
-                SizedBox(
+              children: [
+                const Icon(Icons.search_rounded),
+                const SizedBox(
                   width: 20,
                 ),
-                Text("Search"),
-                Expanded(child: SizedBox()),
-                Icon(Icons.tune_rounded)
+                const Text("Search"),
+                const Expanded(child: SizedBox()),
+                IconButton(
+                    icon: const Icon(Icons.tune_rounded),
+                    onPressed: () {
+                      showModalBottomSheet<void>(
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(35),
+                            ),
+                          ),
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Container(
+                              height: MediaQuery.of(context).size.height * 0.75,
+                              decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(35),
+                                    topRight: Radius.circular(35),
+                                  )),
+                              child: Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    const Text('Modal BottomSheet'),
+                                    ElevatedButton(
+                                      child: const Text('Close BottomSheet'),
+                                      onPressed: () => Navigator.pop(context),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            );
+                          });
+                    })
               ],
             ),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.grey[300]),
+                color: Colors.grey[200]),
           ),
         ),
       ],
@@ -101,19 +135,21 @@ class _SearchPageState extends State<SearchPage> {
 
   Widget categoryContainer({required String title, required int index}) {
     return Container(
-      margin: const EdgeInsets.all(8),
-      padding: const EdgeInsets.symmetric(horizontal: 25),
+      margin: const EdgeInsets.only(right: 10, top: 10, bottom: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
-        color: AppColors.green,
+        color: index == 1 ? AppColors.green : Colors.transparent,
         borderRadius: BorderRadius.circular(30),
+        border: Border.all(color: AppColors.green, width: 1.5),
       ),
       child: Center(
           child: Text(
         title,
         style: TextStyle(
+            fontSize: 12,
             fontWeight: FontWeight.bold,
             letterSpacing: .2,
-            color: AppColors.white),
+            color: index == 1 ? AppColors.white : AppColors.green),
       )),
     );
   }
@@ -126,7 +162,7 @@ class _SearchPageState extends State<SearchPage> {
       height: 120,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.grey[200],
+        color: Colors.grey[100],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -154,11 +190,11 @@ class _SearchPageState extends State<SearchPage> {
             children: [
               const Text(
                 "President Hotel",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               const Text(
                 "Paris, France",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
               ),
               Row(
                 children: const [
@@ -168,8 +204,8 @@ class _SearchPageState extends State<SearchPage> {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                   ),
                   Text(
-                    "(4738 review )",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                    " (4738 review )",
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
                   )
                 ],
               )
@@ -186,7 +222,13 @@ class _SearchPageState extends State<SearchPage> {
                     fontWeight: FontWeight.bold,
                     color: AppColors.green),
               ),
-              const Text("/ night"),
+              const Text(
+                "/ night",
+                style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 13,
+                    letterSpacing: .7),
+              ),
               IconButton(onPressed: () {}, icon: const Icon(Icons.bookmark))
             ],
           )
